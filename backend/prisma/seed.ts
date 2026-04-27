@@ -2,9 +2,16 @@ import { PrismaClient, Role, Country } from '@prisma/client';
 import { PrismaLibSql } from '@prisma/adapter-libsql';
 import * as bcrypt from 'bcryptjs';
 import * as path from 'path';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-const DB_URL = 'file:' + path.join(process.cwd(), 'prisma', 'dev.db');
-const adapter = new PrismaLibSql({ url: DB_URL });
+const tursoUrl = process.env.TURSO_DATABASE_URL;
+const tursoToken = process.env.TURSO_AUTH_TOKEN;
+
+const adapter = tursoUrl && tursoToken
+  ? new PrismaLibSql({ url: tursoUrl, authToken: tursoToken })
+  : new PrismaLibSql({ url: 'file:' + path.join(process.cwd(), 'prisma', 'dev.db') });
+
 const prisma = new PrismaClient({ adapter } as any);
 
 async function main() {

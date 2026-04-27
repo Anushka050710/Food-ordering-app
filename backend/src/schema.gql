@@ -34,6 +34,7 @@ type MenuItemType {
 
 type Mutation {
   addPaymentMethod(expiryDate: String!, isDefault: Boolean! = false, last4: String!, type: String!, userId: ID!): PaymentMethodType!
+  aiChat(message: String!): String!
   cancelOrder(orderId: ID!): OrderType!
   checkout(orderId: ID!, paymentMethodId: ID!): OrderType!
   createOrder(items: [OrderItemInput!]!, restaurantId: ID!): OrderType!
@@ -90,6 +91,8 @@ type PaymentMethodType {
 }
 
 type Query {
+  aiRecommendations: String!
+  aiSearch(query: String!): String!
   me: UserType!
   menuItems(restaurantId: ID!): [MenuItemType!]!
   order(id: ID!): OrderType!

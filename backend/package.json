@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build",
+    "build": "prisma generate && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -29,6 +29,7 @@
   "dependencies": {
     "@apollo/server": "^5.5.0",
     "@as-integrations/express5": "^1.1.2",
+    "@google/generative-ai": "^0.24.1",
     "@libsql/client": "^0.17.3",
     "@nestjs/apollo": "^13.3.0",
     "@nestjs/common": "^11.0.1",
@@ -42,6 +43,7 @@
     "bcryptjs": "^3.0.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.15.1",
+    "dotenv": "^17.4.2",
     "graphql": "^16.13.2",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
