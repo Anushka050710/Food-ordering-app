@@ -112,3 +112,23 @@ export const GET_USERS = gql`
     users { id name email role country }
   }
 `;
+
+// ─── AI Features ─────────────────────────────────────────────────────────────
+
+export const AI_CHAT = gql`
+  mutation AiChat($message: String!) {
+    aiChat(message: $message)
+  }
+`;
+
+export const AI_RECOMMENDATIONS = gql`
+  query AiRecommendations {
+    aiRecommendations
+  }
+`;
+
+export const AI_SEARCH = gql`
+  query AiSearch($query: String!) {
+    aiSearch(query: $query)
+  }
+`;

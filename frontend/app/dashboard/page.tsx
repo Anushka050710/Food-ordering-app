@@ -5,6 +5,9 @@ import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import { GET_RESTAURANTS } from '@/lib/graphql/queries';
 import { getUser } from '@/lib/auth';
+import AiSearch from '@/components/AiSearch';
+import AiRecommendations from '@/components/AiRecommendations';
+import AiChatbot from '@/components/AiChatbot';
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -28,6 +31,16 @@ export default function DashboardPage() {
           <p className="text-gray-500 text-sm mt-1">
             Showing restaurants in {countryFlag[user.country]} {user.country === 'INDIA' ? 'India' : 'America'}
           </p>
+        </div>
+
+        {/* AI Search — Feature 3 */}
+        <div className="mb-6">
+          <AiSearch />
+        </div>
+
+        {/* AI Recommendations — Feature 2 */}
+        <div className="mb-8">
+          <AiRecommendations />
         </div>
 
         {loading && (
